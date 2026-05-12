@@ -52,11 +52,12 @@ const acara = {
 };
 ---
 
-<!-- <Modal /> -->
+<Modal />
 <Layout>
-  <div>
-    <!-- class="hidden opacity-0 transition-opacity duration-1000" -->
-    <!-- id="mainContent" -->
+  <div
+    class="hidden opacity-0 transition-opacity duration-1000"
+    id="mainContent"
+  >
     <Hero>
       <div class="divider-bawah"></div>
     </Hero>
@@ -109,7 +110,7 @@ const acara = {
     <Sound client:load />
   </div>
 
-  <!-- <script>
+  <script>
     // Listen for a custom event from the Modal component
     document.addEventListener("modalClosed", function () {
       const mainContent = document.getElementById("mainContent");
@@ -122,5 +123,5 @@ const acara = {
         }, 100);
       }
     });
-  </script> -->
+  </script>
 </Layout>

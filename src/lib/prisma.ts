@@ -16,8 +16,9 @@
 // if (import.meta.env.MODE !== "production") globalForPrisma.prisma = prisma;
 
 import { PrismaPg } from "@prisma/adapter-pg";
-import { PrismaClient } from "@prisma/client";
+import pkg from "@prisma/client";
 
+const { PrismaClient } = pkg;
 const connectionString = import.meta.env.DATABASE_URL;
 const adapter = new PrismaPg({ connectionString });
 

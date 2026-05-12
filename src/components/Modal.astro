@@ -1,0 +1,259 @@
+---
+import { Image } from "astro:assets";
+
+import bgModal from "@assets/dekorasi/bg-main-3.jpg";
+import ornamentl from "@assets/dekorasi/orn-top-left.webp";
+import ornamentr from "@assets/dekorasi/orn-top-right.webp";
+import ornamenGunungan from "@assets/dekorasi/ornamen-gunungan.webp";
+import { IconMail } from "@components/Icon";
+
+const namaTamu = Astro.url.searchParams.get("nama");
+const gelarTamu = Astro.url.searchParams.get("to");
+---
+
+<div class="loading-overlay flex" id="loadingOverlay">
+  <div class="circle-loader">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+</div>
+
+<section class="fixed h-dvh w-full z-[1000]" id="modalInvitation">
+  <div
+    class="carousel-container absolute inset-0 w-full h-screen overflow-hidden"
+  >
+    <div class="absolute inset-0 w-full h-screen">
+      <Image
+        src={bgModal}
+        alt="bg-modal"
+        class="h-full w-full object-cover"
+        loading="eager"
+        decoding="sync"
+      />
+      <div class="absolute inset-0 bg-black/5"></div>
+    </div>
+  </div>
+
+  <div class="absolute lg:hidden top-0 left-0 lg:w-1/4 md:w-1/2 w-3/4">
+    <Image loading={"eager"} src={ornamentl} alt="ornament top left" />
+  </div>
+
+  <div class="absolute lg:hidden top-0 right-0 lg:w-1/4 md:w-1/2 w-3/4">
+    <Image loading={"eager"} src={ornamentr} alt="ornament top roight" />
+  </div>
+
+  <div
+    class="absolute z-10 transform -translate-x-1/2 left-1/2 bottom-1/2 sm:w-1/4 w-1/2"
+  >
+    <div class="relative py-4">
+      <div class="space-y-1">
+        <p class="font-bold text-8xl font-bonheur-royale">S</p>
+        <p class="font-bold text-5xl font-parisienne text-center">&</p>
+        <p class="font-bold text-8xl font-bonheur-royale text-end">R</p>
+      </div>
+    </div>
+    <div
+      class="absolute transform -translate-x-1/2 left-1/2 bottom-0 lg:top-0 w-3/4 lg:w-1/2 opacity-25"
+    >
+      <Image
+        loading={"eager"}
+        src={ornamenGunungan}
+        alt="ornament top roight"
+      />
+    </div>
+  </div>
+
+  <div
+    class="absolute z-10 transform -translate-x-1/2 left-1/2 bottom-10 w-11/12 text-gray-800"
+  >
+    <div class="text-center py-4">
+      <div class="space-y-1 font-caudex">
+        <p>Kepada Yth.</p>
+        <p class="font-medium text-lg">
+          {gelarTamu || "Bapak/Ibu/Saudara/i"}
+        </p>
+        <p class="font-semibold text-xl">{namaTamu || "---"}</p>
+      </div>
+      <!-- <div class="mt-4">
+        <p>You are invited to</p>
+        <p>Our Wedding Celebration</p>
+      </div>
+      <div class="grid grid-cols-1 gap-1 mt-4 font-playfair-display">
+        <h3 class="text-4xl font-bold">Iin</h3>
+        <p class="text-3xl content-center">&</p>
+        <h3 class="text-4xl font-bold">Husnun</h3>
+      </div> -->
+      <button
+        class="w-3/4 mx-auto flex items-center justify-center gap-x-2 mt-8 py-2 bg-coklat-petro text-white font-semibold border border-coklat-petro hover:cursor-pointer hover:bg-white hover:text-coklat-petro rounded-md transition-colors duration-300 font-playfair-display"
+        id="openButton"
+      >
+        <IconMail />
+        Buka Undangan
+      </button>
+    </div>
+  </div>
+</section>
+
+<div class="circle-transition" id="circleTransition"></div>
+
+<script>
+  // Wait for everything to load
+  window.addEventListener("load", function () {
+    const openButton = document.getElementById("openButton");
+    const modal = document.getElementById("modalInvitation");
+    const loadingOverlay = document.getElementById("loadingOverlay");
+    const circleTransition = document.getElementById("circleTransition");
+
+    // Lock scrolling when modal is shown
+    document.body.style.overflow = "hidden";
+
+    // Hide loading overlay after a short delay
+    setTimeout(() => {
+      if (loadingOverlay) {
+        loadingOverlay.classList.add("fade-out");
+        setTimeout(() => {
+          loadingOverlay.classList.remove("flex");
+          loadingOverlay.classList.add("hidden");
+        }, 500);
+      }
+    }, 1500);
+
+    if (modal) {
+      // Reset any previous state first
+      modal.classList.remove("slide-up");
+      modal.classList.add("slide-down");
+    }
+
+    if (openButton && modal && circleTransition) {
+      openButton.addEventListener("click", () => {
+        // Dispatch event to trigger audio play
+        document.dispatchEvent(new CustomEvent("modalOpened"));
+
+        // Start circle transition
+        circleTransition.classList.add("active");
+
+        // After circle animation completes, slide the modal up
+        setTimeout(() => {
+          modal.classList.remove("slide-down");
+          modal.classList.add("slide-up");
+
+          // Then hide the element after transition completes
+          setTimeout(() => {
+            modal.classList.add("hidden");
+            // Re-enable scrolling once modal is hidden
+            document.body.style.overflow = "auto";
+
+            // Complete circle transition
+            circleTransition.classList.add("complete");
+
+            // Dispatch a custom event to notify index page that modal is closed
+            document.dispatchEvent(new CustomEvent("modalClosed"));
+          }, 700);
+        }, 500);
+      });
+    }
+  });
+</script>
+
+<style>
+  /* Loading overlay */
+  .loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f5f5f5;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    transition: opacity 0.5s ease;
+  }
+
+  .loading-overlay.fade-out {
+    opacity: 0;
+  }
+
+  /* Circle loader animation */
+  .circle-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .circle {
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    background-color: var(--coklat-petro, #a48d66);
+    border-radius: 50%;
+    animation: bounce 1s infinite ease-in-out;
+  }
+
+  .circle:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  .circle:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .circle:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  /* Modal animation */
+  #modalInvitation {
+    transform: translateY(-100%);
+    transition: transform 0.7s ease-in-out;
+  }
+
+  .slide-down {
+    transform: translateY(0) !important;
+  }
+
+  .slide-up {
+    transform: translateY(-100%) !important;
+  }
+
+  /* Circle transition animation */
+  .circle-transition {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 100px;
+    height: 100px;
+    background-color: var(--coklat-petro, #a48d66);
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0;
+    transition:
+      transform 1.2s cubic-bezier(0.86, 0, 0.07, 1),
+      opacity 0.3s ease;
+  }
+
+  .circle-transition.active {
+    transform: translate(-50%, -50%) scale(0.1);
+    opacity: 1;
+  }
+
+  .circle-transition.complete {
+    transform: translate(-50%, -50%) scale(20);
+    opacity: 0;
+    transition:
+      transform 1.5s cubic-bezier(0.86, 0, 0.07, 1),
+      opacity 1.5s ease 0.7s;
+  }
+</style>

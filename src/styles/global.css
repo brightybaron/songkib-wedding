@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Monsieur+La+Doulaise&family=Parisienne&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Tangerine:wght@400;700&display=swap&family=Caudex:ital,wght@0,400;0,700;1,400;1,700&display=swap&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --font-plus-jakarta-sans: "Plus Jakarta Sans", sans-serif;
+  --font-bonheur-royale: "Bonheur Royale", cursive;
+  --font-monsieur-la-doulaise: "Monsieur La Doulaise", cursive;
+  --font-parisienne: "Parisienne", cursive;
+  --font-playfair-display: "Playfair Display", serif;
+  --font-tangerine: "Tangerine", cursive;
+  --font-caudex: "Caudex", serif;
+  --font-poppins: "Poppins", sans-serif;
+  --color-blue-jeans: #2c4564;
+  --color-blueish-gray: #5d8094;
+  --color-coklat-petro: #a48d66;
+}
+
+@layer components {
+  .divider-bawah {
+    background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='40px' viewBox='0 0 1280 140' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M 0 88.131 C 0 88.131 46.728 108.079 132.558 108.796 C 232.558 109.632 476.511 87.343 499.796 87.654 C 637.519 89.491 908.193 117.054 1057.784 118.41 C 1207.375 119.766 1280 104.6 1280 104.6 L 1280 140 L 0 140 L 0 88.131 Z' style='opacity: 0.3;'%3E%3C/path%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M 0 100 C 0 100 84.807 120.209 137.538 120.451 C 237.54 120.91 417.727 89.82 503.067 88.332 C 606.681 86.525 876.142 132.429 1025.733 133.785 C 1175.324 135.141 1280 117.9 1280 117.9 L 1280 140.307 L 0 140.307 L 0 100 Z' style='opacity: 0.5;'%3E%3C/path%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M 0 130.104 C 0 130.104 110.092 138.328 170.389 139.156 C 245.444 140.187 364.567 93.454 550.199 90.671 C 618.702 89.644 861.585 138.579 1011.128 139.921 C 1160.671 141.262 1280 125.069 1280 125.069 L 1280 140.2 L 0 139.93 L 0 130.104 Z' style='transform-origin: 640px 0px;'%3E%3C/path%3E%3C/svg%3E");
+    position: absolute;
+    background-size: 100% 80px;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 5;
+  }
+  .divider-atas {
+    background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='40px' viewBox='0 0 1280 140' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M 0 88.131 C 0 88.131 46.728 108.079 132.558 108.796 C 232.558 109.632 476.511 87.343 499.796 87.654 C 637.519 89.491 908.193 117.054 1057.784 118.41 C 1207.375 119.766 1280 104.6 1280 104.6 L 1280 140 L 0 140 L 0 88.131 Z' style='opacity: 0.3;'%3E%3C/path%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M 0 100 C 0 100 84.807 120.209 137.538 120.451 C 237.54 120.91 417.727 89.82 503.067 88.332 C 606.681 86.525 876.142 132.429 1025.733 133.785 C 1175.324 135.141 1280 117.9 1280 117.9 L 1280 140.307 L 0 140.307 L 0 100 Z' style='opacity: 0.5;'%3E%3C/path%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M 0 130.104 C 0 130.104 110.092 138.328 170.389 139.156 C 245.444 140.187 364.567 93.454 550.199 90.671 C 618.702 89.644 861.585 138.579 1011.128 139.921 C 1160.671 141.262 1280 125.069 1280 125.069 L 1280 140.2 L 0 139.93 L 0 130.104 Z' style='transform-origin: 640px 0px;'%3E%3C/path%3E%3C/svg%3E");
+    position: absolute;
+    background-size: 100% 80px;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 5;
+    transform: rotate(180deg);
+  }
+}

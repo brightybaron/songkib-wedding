@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+
+}
+
+model Tamu {
+  id         Int                  @id @default(autoincrement())
+  nama       String               @unique
+  createdAt  DateTime             @default(now())
+  updatedAt  DateTime             @updatedAt
+  konfirmasi KonfirmasiKehadiran?
+  ucapan     Ucapan[]
+}
+
+model KonfirmasiKehadiran {
+  id        Int      @id @default(autoincrement())
+  namaTamu  String   @unique
+  kehadiran String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  tamu      Tamu     @relation(fields: [namaTamu], references: [nama])
+}
+
+model Ucapan {
+  id        Int      @id @default(autoincrement())
+  namaTamu  String
+  isiUcapan String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  tamu      Tamu     @relation(fields: [namaTamu], references: [nama])
+}

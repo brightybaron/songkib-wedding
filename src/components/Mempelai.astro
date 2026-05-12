@@ -1,0 +1,88 @@
+---
+import { Image } from "astro:assets";
+import ornament1 from "@assets/dekorasi/ornamen-1.png";
+import ornamentl from "@assets/dekorasi/orn-top-left.webp";
+import ornamentr from "@assets/dekorasi/orn-top-right.webp";
+import ornamenbl1 from "@assets/dekorasi/ornamen-12.webp";
+import ornamenbl2 from "@assets/dekorasi/ornamen-11.webp";
+import ornamenbl3 from "@assets/dekorasi/ornamen-13.webp";
+import ornamenbr from "@assets/dekorasi/ornamen-10.webp";
+import ornament5 from "@assets/dekorasi/ornamen-gunungan.webp";
+import ornamentBg from "@assets/dekorasi/bg-main-3.jpg";
+
+const { bride, groom } = Astro.props;
+---
+
+<section class="relative h-full w-full overflow-hidden py-12">
+  <div class="absolute inset-0 w-full h-full">
+    <Image
+      loading={"eager"}
+      src={ornamentBg}
+      alt="ornament top"
+      class="h-full w-full object-cover object-center"
+    />
+  </div>
+
+  <div
+    class="relative max-w-7xl mx-auto h-full flex flex-col items-center justify-center"
+  >
+    <div class="mx-auto lg:w-1/12 md:w-1/6 w-1/4">
+      <Image src={ornament5} alt="ornamen blue flower scale-75" />
+    </div>
+    <div class="px-4 text-center lg:w-auto sm:w-1/2 mb-8 space-y-4 mt-4">
+      <p class="text-lg md:text-xl font-bold text-blue-jeans">
+        Assalamu'alaikum Wr. Wb.
+      </p>
+      <p class="text-base font-medium max-w-3xl">
+        Dengan memohon Rahmat dan Ridho Allah SWT, kami mengundang
+        Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan putra-putri kami:
+      </p>
+    </div>
+    <div
+      class="grid grid-cols-1 lg:grid-cols-7 mt-6 text-center z-30 gap-y-6 w-full"
+    >
+      <div class="grid lg:grid-cols-2 col-span-3">
+        <div class="md:text-right">
+          <h3 class="text-8xl font-bold font-bonheur-royale text-amber-500">
+            {bride.name.short}
+          </h3>
+          <h3 class="text-2xl mt-2 font-semibold text-cyan-900 mb-2">
+            {bride.name.long}
+          </h3>
+          <p class="text-base">Putri Kedua dari</p>
+          <div class="font-semibold tracking-wide">
+            <p>Bapak {bride.parents.father}</p>
+            <p>Ibu {bride.parents.mother}</p>
+          </div>
+        </div>
+        <Image
+          src={bride.image}
+          alt={bride.name.long}
+          class="mt-4 mx-auto max-w-48 h-auto"
+        />
+      </div>
+      <p class="text-8xl content-center font-tangerine font-bold">&</p>
+      <div class="grid lg:grid-cols-2 col-span-3">
+        <Image
+          src={groom.image}
+          alt={groom.name.long}
+          class="mt-4 mx-auto max-w-48 h-auto"
+        />
+        <div class="md:text-left">
+          <h3 class="text-8xl font-bold font-bonheur-royale text-amber-500">
+            {groom.name.short}
+          </h3>
+          <h3 class="text-2xl mt-2 font-semibold text-cyan-900 mb-2">
+            {groom.name.long}
+          </h3>
+          <p class="text-base">Putra Pertama dari</p>
+          <div class="font-semibold tracking-wide">
+            <p>Bapak {groom.parents.father}</p>
+            <p>Ibu {groom.parents.mother}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <slot />
+</section>

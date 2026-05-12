@@ -1,0 +1,126 @@
+---
+import Acara from "@components/Acara.astro";
+import Ayat from "@components/Ayat.astro";
+import Countdown from "@components/Countdown.astro";
+import Hero from "@components/Hero.astro";
+import Mempelai from "@components/Mempelai.astro";
+import Modal from "@components/Modal.astro";
+import Rsvp from "@components/Rsvp.astro";
+import Sound from "@components/Sound";
+import WeddingWish from "@components/WeddingWish.astro";
+import Layout from "@layouts/Layout.astro";
+import bg1 from "@assets/foto/duo-1.jpeg";
+import { Image } from "astro:assets";
+import bridePhoto from "@assets/foto/4.png";
+import groomPhoto from "@assets/foto/3.png";
+
+const namaTamu = Astro.url.searchParams.get("nama");
+
+const manten = {
+  bride: {
+    name: { short: "Serly", long: "Serly Sinta Animas Rully" },
+    parents: { father: "Khoirul Abidin", mother: "Hj. Ummah" },
+    image: bridePhoto,
+  },
+  groom: {
+    name: { short: "Rizki", long: "Rizki Ilda Pratama" },
+    parents: { father: "H. Ilham", mother: "Naya Kusuma" },
+    image: groomPhoto,
+  },
+};
+
+const countdown = {
+  targetDate: "June 6, 2026",
+  targetTime: "13:00",
+};
+
+const acara = {
+  akad: {
+    tanggal: new Date("June 4, 2026"),
+    jam: "08.00",
+    tempat: "Kediaman mempelai wanita",
+    alamat: "Perum Banjarsari Asri Blok LD/24, Gresik",
+    linkmap: "link-dummy",
+  },
+  respsi: {
+    tanggal: new Date("June 6, 2026"),
+    jam: "13.00",
+    tempat: "Kediaman mempelai pria",
+    alamat: "Jl. Dr. Wahidin S.H. 1B no. 26, Ds. Putat, Kebomas, Gresik",
+    linkmap: "https://maps.app.goo.gl/ckM7XtkUASGqyYVt7",
+  },
+};
+---
+
+<!-- <Modal /> -->
+<Layout>
+  <div>
+    <!-- class="hidden opacity-0 transition-opacity duration-1000" -->
+    <!-- id="mainContent" -->
+    <Hero>
+      <div class="divider-bawah"></div>
+    </Hero>
+
+    <Ayat />
+
+    <!-- BG 1 -->
+    <section class="relative w-full">
+      <div class="divider-atas"></div>
+      <Image
+        src={bg1}
+        alt=""
+        class="object-cover object-center h-[80vh] w-full"
+      />
+      <div class="divider-bawah"></div>
+    </section>
+
+    <Mempelai {...manten}>
+      <div class="divider-atas"></div>
+      <div class="divider-bawah"></div>
+    </Mempelai>
+
+    <Acara {...acara}>
+      <div class="divider-atas"></div>
+      <div class="divider-bawah"></div>
+    </Acara>
+
+    <Rsvp namaTamu={namaTamu}>
+      <div class="divider-atas"></div>
+      <div class="divider-bawah"></div>
+    </Rsvp>
+
+    <Countdown {...countdown}>
+      <div class="divider-atas"></div>
+    </Countdown>
+
+    <WeddingWish namaTamu={namaTamu}>
+      <div class="divider-atas"></div>
+    </WeddingWish>
+
+    <section class="w-full py-8 bg-coklat-petro text-coklat-petro border-b-4">
+      <div class="mx-auto max-w-3xl text-white leading-3 text-sm">
+        <p class="text-center font-medium">made by</p>
+        <p class="text-center text-lg font-bold font-playfair-display">
+          brightybaron
+        </p>
+        <p class="text-center font-medium">&copy; 2026</p>
+      </div>
+    </section>
+    <Sound client:load />
+  </div>
+
+  <!-- <script>
+    // Listen for a custom event from the Modal component
+    document.addEventListener("modalClosed", function () {
+      const mainContent = document.getElementById("mainContent");
+      if (mainContent) {
+        mainContent.classList.remove("hidden");
+
+        // Add a small delay to trigger the fade-in effect after the element is shown
+        setTimeout(() => {
+          mainContent.classList.add("opacity-100");
+        }, 100);
+      }
+    });
+  </script> -->
+</Layout>

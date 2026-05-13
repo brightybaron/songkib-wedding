@@ -72,13 +72,13 @@ const WeddingGiftButton = () => {
       <div className="mx-auto flex justify-evenly max-w-md">
         <button
           onClick={openGiftModal}
-          className="bg-white px-3 py-1.5 rounded hover:cursor-pointer hover:scale-105 transition-all duration-200"
+          className="bg-coklat-petro text-white px-3 py-1.5 rounded hover:cursor-pointer hover:scale-105 transition-all duration-200"
         >
           Kirim Kado
         </button>
         <button
           onClick={openCashlessModal}
-          className="bg-white px-3 py-1.5 rounded hover:cursor-pointer hover:scale-105 transition-all duration-200"
+          className="bg-coklat-petro text-white px-3 py-1.5 rounded hover:cursor-pointer hover:scale-105 transition-all duration-200"
         >
           Cashless
         </button>
@@ -116,11 +116,11 @@ const WeddingGiftButton = () => {
                 Anda dapat mengirimkan kado ke alamat berikut:
               </p>
               <div className="bg-gray-100 p-4 rounded-md">
-                <p className="font-medium">Nama Mempelai</p>
+                <p className="font-medium">Rizki Ilda Pratama</p>
                 <p className="mb-2">
-                  Jl. Contoh Alamat No. 123, Kota, Kode Pos
+                  Jl. Dr. Wahidin S.H. 1B no. 28, Ds. Putat, Kebomas, Gresik
                 </p>
-                <p className="font-medium">Telepon: +62 812 3456 7890</p>
+                {/* <p className="font-medium">Telepon: </p> */}
               </div>
             </div>
             <button

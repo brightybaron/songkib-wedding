@@ -13,18 +13,19 @@ import bg1 from "@assets/foto/duo-1.jpeg";
 import { Image } from "astro:assets";
 import bridePhoto from "@assets/foto/4.png";
 import groomPhoto from "@assets/foto/3.png";
+import WeddingGift from "@components/WeddingGift.astro";
 
 const namaTamu = Astro.url.searchParams.get("nama");
 
 const manten = {
   bride: {
     name: { short: "Serly", long: "Serly Sinta Animas Rully" },
-    parents: { father: "Khoirul Abidin", mother: "Hj. Ummah" },
+    parents: { father: "Khoirul Abidin", mother: "Masfufah" },
     image: bridePhoto,
   },
   groom: {
     name: { short: "Rizki", long: "Rizki Ilda Pratama" },
-    parents: { father: "H. Ilham", mother: "Naya Kusuma" },
+    parents: { father: "H. Ilham", mother: "Hj. Lilik Farida" },
     image: groomPhoto,
   },
 };
@@ -44,9 +45,9 @@ const acara = {
   },
   respsi: {
     tanggal: new Date("June 6, 2026"),
-    jam: "13.00",
+    jam: "13.00 - 21.00",
     tempat: "Kediaman mempelai pria",
-    alamat: "Jl. Dr. Wahidin S.H. 1B no. 26, Ds. Putat, Kebomas, Gresik",
+    alamat: "Jl. Dr. Wahidin S.H. 1B no. 28, Ds. Putat, Kebomas, Gresik",
     linkmap: "https://maps.app.goo.gl/6ucDtKBxfRy7Q1Dy5",
   },
 };
@@ -92,6 +93,8 @@ const acara = {
       <div class="divider-bawah"></div>
     </Rsvp>
 
+    <WeddingGift />
+
     <Countdown {...countdown}>
       <div class="divider-atas"></div>
     </Countdown>
@@ -103,7 +106,9 @@ const acara = {
     <section class="w-full py-8 bg-coklat-petro text-coklat-petro border-b-4">
       <div class="mx-auto max-w-3xl text-white leading-3 text-sm text-center">
         <p class="font-medium">made by</p>
-        <p class="text-base font-bold font-playfair-display">proliosdigital</p>
+        <p class="text-base font-bold font-playfair-display capitalize">
+          prolios digital printing
+        </p>
         <p class="font-medium">&copy; 2026</p>
       </div>
     </section>

@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 
-const WeddingGiftButton = () => {
+interface Props {
+  qris: string;
+}
+
+const WeddingGiftButton = ({ qris }: Props) => {
   const [showGiftModal, setShowGiftModal] = useState(false);
   const [showCashlessModal, setShowCashlessModal] = useState(false);
   const [copyMessage, setCopyMessage] = useState("");
@@ -74,13 +78,13 @@ const WeddingGiftButton = () => {
           onClick={openGiftModal}
           className="bg-coklat-petro text-white px-3 py-1.5 rounded hover:cursor-pointer hover:scale-105 transition-all duration-200"
         >
-          Kirim Kado
+          QRIS
         </button>
         <button
           onClick={openCashlessModal}
           className="bg-coklat-petro text-white px-3 py-1.5 rounded hover:cursor-pointer hover:scale-105 transition-all duration-200"
         >
-          Cashless
+          Transfer
         </button>
       </div>
 
@@ -102,7 +106,7 @@ const WeddingGiftButton = () => {
           >
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-xl font-semibold font-playfair-display">
-                Kirim Kado
+                Scan QRIS
               </h3>
               <button
                 onClick={closeModals}
@@ -112,23 +116,27 @@ const WeddingGiftButton = () => {
               </button>
             </div>
             <div className="mb-4">
-              <p className="mb-4">
-                Anda dapat mengirimkan kado ke alamat berikut:
-              </p>
+              <p className="mb-4">Silakan pindai/unduh QRIS berikut:</p>
               <div className="bg-gray-100 p-4 rounded-md">
-                <p className="font-medium">Rizki Ilda Pratama</p>
-                <p className="mb-2">
-                  Jl. Dr. Wahidin S.H. 1B no. 28, Ds. Putat, Kebomas, Gresik
-                </p>
-                {/* <p className="font-medium">Telepon: </p> */}
+                <img src={qris} alt="QRIS" className="w-full" />
               </div>
             </div>
-            <button
-              onClick={closeModals}
-              className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition-colors"
-            >
-              Tutup
-            </button>
+
+            <div className="flex gap-2">
+              <a
+                href={qris}
+                download="QRIS-Rizki.png"
+                className="flex-1 bg-coklat-petro text-white py-2 rounded text-center hover:bg-blue-600 transition-colors"
+              >
+                Unduh QRIS
+              </a>
+              <button
+                onClick={closeModals}
+                className="flex-1 bg-coklat-petro text-white py-2 rounded hover:bg-blue-600 transition-colors"
+              >
+                Tutup
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -151,7 +159,7 @@ const WeddingGiftButton = () => {
           >
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-xl font-semibold font-playfair-display">
-                Cashless
+                Trasnfer Bank
               </h3>
               <button
                 onClick={closeModals}
@@ -169,23 +177,21 @@ const WeddingGiftButton = () => {
 
             <div className="mb-4">
               <p className="mb-4">
-                Anda dapat memberikan hadiah cashless melalui rekening berikut:
+                Anda dapat memberikan hadiah melalui rekening berikut:
               </p>
               <div className="space-y-4">
                 <div className="bg-gray-100 p-4 rounded-md">
-                  <p className="font-medium">Bank ABC</p>
+                  <p className="font-medium">Bank BNI</p>
                   <div className="flex items-center justify-between">
-                    <p className="text-lg font-bold">1234 5678 9012 3456</p>
+                    <p className="text-lg font-bold">085 6515 074</p>
                     <button
-                      onClick={() =>
-                        copyToClipboard("1234567890123456", "Bank ABC")
-                      }
+                      onClick={() => copyToClipboard("0856515074", "Bank BNI")}
                       className="bg-blue-500 text-white px-2 py-1 rounded text-sm hover:bg-blue-600 transition-colors"
                     >
                       Salin
                     </button>
                   </div>
-                  <p>a.n. Nama Mempelai Pria</p>
+                  <p>a.n. Rizki Ilda Pratama</p>
                 </div>
                 <div className="bg-gray-100 p-4 rounded-md">
                   <p className="font-medium">Bank XYZ</p>
@@ -206,7 +212,7 @@ const WeddingGiftButton = () => {
             </div>
             <button
               onClick={closeModals}
-              className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition-colors"
+              className="w-full bg-coklat-petro text-white py-2 rounded hover:bg-blue-600 transition-colors"
             >
               Tutup
             </button>

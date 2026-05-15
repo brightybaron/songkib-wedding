@@ -3,6 +3,7 @@ import DualHeading from "@components/DualHeading.astro";
 import WeddingGiftButton from "@components/WeddingGiftButton";
 import ornament5 from "@assets/dekorasi/ornamen-7.webp";
 import qrisImg from "@assets/bank/qr-bni.jpeg";
+import bankLogo from "@assets/bank/logo-bni.png";
 import { Image } from "astro:assets";
 ---
 
@@ -17,5 +18,5 @@ import { Image } from "astro:assets";
       memberi adalah ungkapan tanda kasih, anda dapat memberi kado kepada kami.
     </p>
   </div>
-  <WeddingGiftButton qris={qrisImg.src} client:load />
+  <WeddingGiftButton qris={qrisImg.src} bankLogo={bankLogo.src} client:load />
 </section>

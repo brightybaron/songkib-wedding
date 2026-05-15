@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import ornament1 from "@assets/dekorasi/ornamen-1.png";
 import ornament5 from "@assets/dekorasi/ornamen-7.webp";
 import ornamentBg from "@assets/dekorasi/bg-main-3.jpg";
 import DualHeading from "@components/DualHeading.astro";
@@ -62,7 +61,7 @@ const ucapanList = ucapan.success ? ucapan.data : [];
           <button
             type="submit"
             id="submitBtn"
-            class="bg-coklat-petro hover:cursor-pointer text-white font-semibold px-3 py-1.5 rounded-md w-fit"
+            class="bg-coklat-petro hover:cursor-pointer text-white font-semibold px-3 py-1.5 rounded-md w-fit flex items-center gap-x-2"
           >
             <span>Kirim</span>
             <span id="loadingSpinner" class="hidden">
@@ -93,7 +92,7 @@ const ucapanList = ucapan.success ? ucapan.data : [];
           id="commentCount"
           class="text-sm text-coklat-petro font-semibold text-center mb-2"
         >
-          {ucapanList?.length} Comments
+          {ucapanList?.length} Wishes
         </p>
         <div class="px-4">
           <div

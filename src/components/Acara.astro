@@ -71,13 +71,6 @@ const { akad, respsi } = Astro.props;
           <p class="font-medium">Tempat acara :</p>
           <p class="font-semibold">{akad.tempat}</p>
           <p>{akad.alamat}</p>
-          <!-- <a
-            href={akad.linkmap}
-            target="_blank"
-            class="bg-coklat-petro px-4 py-1.5 rounded text-white font-medium w-fit mx-auto"
-          >
-            Lihat Lokasi
-          </a> -->
         </div>
       </div>
 
@@ -119,21 +112,12 @@ const { akad, respsi } = Astro.props;
           <a
             href={respsi.linkmap}
             target="_blank"
-            class="bg-coklat-petro px-4 py-1.5 rounded text-white font-medium w-fit mx-auto"
+            class="block bg-coklat-petro mt-4 px-4 py-1.5 rounded text-white font-medium w-fit mx-auto"
           >
             Lihat Lokasi
           </a>
         </div>
       </div>
-      <!-- <div class="w-full">
-        <a
-          href={respsi.linkmap}
-          target="_blank"
-          class="bg-coklat-petro px-4 py-2 rounded text-white font-medium w-fit mx-auto"
-        >
-          Lihat Lokasi Resepsi
-        </a>
-      </div> -->
     </div>
   </div>
   <slot />

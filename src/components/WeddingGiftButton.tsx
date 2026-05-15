@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 
 interface Props {
   qris: string;
+  bankLogo: string;
 }
 
-const WeddingGiftButton = ({ qris }: Props) => {
+const WeddingGiftButton = ({ qris, bankLogo }: Props) => {
   const [showGiftModal, setShowGiftModal] = useState(false);
   const [showCashlessModal, setShowCashlessModal] = useState(false);
   const [copyMessage, setCopyMessage] = useState("");
@@ -44,11 +45,11 @@ const WeddingGiftButton = ({ qris }: Props) => {
     closeCashlessModal();
   };
 
-  const copyToClipboard = (text: string, bank: string) => {
+  const copyToClipboard = (text: string) => {
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        setCopyMessage(`Nomor rekening ${bank} berhasil disalin!`);
+        setCopyMessage(`Nomor rekening ${text} berhasil disalin!`);
         setTimeout(() => setCopyMessage(""), 3000);
       })
       .catch((err) => {
@@ -132,7 +133,7 @@ const WeddingGiftButton = ({ qris }: Props) => {
               </a>
               <button
                 onClick={closeModals}
-                className="flex-1 bg-coklat-petro text-white py-2 rounded hover:bg-blue-600 transition-colors"
+                className="flex-1 bg-red-800 text-white py-2 rounded hover:bg-blue-600 transition-colors"
               >
                 Tutup
               </button>
@@ -159,7 +160,7 @@ const WeddingGiftButton = ({ qris }: Props) => {
           >
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-xl font-semibold font-playfair-display">
-                Trasnfer Bank
+                Transfer Bank
               </h3>
               <button
                 onClick={closeModals}
@@ -177,15 +178,18 @@ const WeddingGiftButton = ({ qris }: Props) => {
 
             <div className="mb-4">
               <p className="mb-4">
-                Anda dapat memberikan hadiah melalui rekening berikut:
+                Anda dapat memberikan kado melalui rekening berikut:
               </p>
               <div className="space-y-4">
-                <div className="bg-gray-100 p-4 rounded-md">
-                  <p className="font-medium">Bank BNI</p>
+                <div className="bg-gray-100 sm:p-4 p-2 rounded-md">
+                  <img src={bankLogo} alt="logo bank" className="sm:h-8 h-6" />
+                  {/* <div className="flex items-center justify-between gap-x-2">
+                    <p className="font-medium">Bank BNI</p>
+                  </div> */}
                   <div className="flex items-center justify-between">
                     <p className="text-lg font-bold">085 6515 074</p>
                     <button
-                      onClick={() => copyToClipboard("0856515074", "Bank BNI")}
+                      onClick={() => copyToClipboard("0856515074")}
                       className="bg-blue-500 text-white px-2 py-1 rounded text-sm hover:bg-blue-600 transition-colors"
                     >
                       Salin
@@ -193,26 +197,11 @@ const WeddingGiftButton = ({ qris }: Props) => {
                   </div>
                   <p>a.n. Rizki Ilda Pratama</p>
                 </div>
-                {/* <div className="bg-gray-100 p-4 rounded-md">
-                  <p className="font-medium">Bank XYZ</p>
-                  <div className="flex items-center justify-between">
-                    <p className="text-lg font-bold">9876 5432 1098 7654</p>
-                    <button
-                      onClick={() =>
-                        copyToClipboard("9876543210987654", "Bank XYZ")
-                      }
-                      className="bg-blue-500 text-white px-2 py-1 rounded text-sm hover:bg-blue-600 transition-colors"
-                    >
-                      Salin
-                    </button>
-                  </div>
-                  <p>a.n. Nama Mempelai Wanita</p>
-                </div> */}
               </div>
             </div>
             <button
               onClick={closeModals}
-              className="w-full bg-coklat-petro text-white py-2 rounded hover:bg-blue-600 transition-colors"
+              className="w-full bg-red-800 text-white py-2 rounded hover:bg-blue-600 transition-colors"
             >
               Tutup
             </button>

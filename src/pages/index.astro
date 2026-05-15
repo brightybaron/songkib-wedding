@@ -14,8 +14,13 @@ import { Image } from "astro:assets";
 import bridePhoto from "@assets/foto/4.png";
 import groomPhoto from "@assets/foto/3.png";
 import WeddingGift from "@components/WeddingGift.astro";
+import { decodeFromBase64 } from "@lib/utils";
+import { getUcapan } from "@lib/data";
 
-const namaTamu = Astro.url.searchParams.get("nama");
+const nama = Astro.url.searchParams.get("nama");
+const gelarTamu = Astro.url.searchParams.get("to");
+
+const namaTamu = nama && decodeFromBase64(nama);
 
 const manten = {
   bride: {
@@ -52,10 +57,10 @@ const acara = {
   },
 };
 
-// export const prerender = true;
+const ucapanList = await getUcapan();
 ---
 
-<Modal />
+<Modal {namaTamu} {gelarTamu} />
 <Layout>
   <div
     class="hidden opacity-0 transition-opacity duration-1000"
@@ -99,7 +104,7 @@ const acara = {
       <div class="divider-atas"></div>
     </Countdown>
 
-    <WeddingWish namaTamu={namaTamu}>
+    <WeddingWish namaTamu={namaTamu} ucapan={ucapanList}>
       <div class="divider-atas"></div>
     </WeddingWish>
 

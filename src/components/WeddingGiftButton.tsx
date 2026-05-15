@@ -193,7 +193,7 @@ const WeddingGiftButton = ({ qris }: Props) => {
                   </div>
                   <p>a.n. Rizki Ilda Pratama</p>
                 </div>
-                <div className="bg-gray-100 p-4 rounded-md">
+                {/* <div className="bg-gray-100 p-4 rounded-md">
                   <p className="font-medium">Bank XYZ</p>
                   <div className="flex items-center justify-between">
                     <p className="text-lg font-bold">9876 5432 1098 7654</p>
@@ -207,7 +207,7 @@ const WeddingGiftButton = ({ qris }: Props) => {
                     </button>
                   </div>
                   <p>a.n. Nama Mempelai Wanita</p>
-                </div>
+                </div> */}
               </div>
             </div>
             <button

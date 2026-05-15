@@ -53,7 +53,7 @@ export default function AudioPlayer() {
 
       <div
         onClick={togglePlay}
-        className={`fixed bottom-10 left-6 flex justify-center items-center cursor-pointer text-gray-600 mix-blend-difference w-16 h-16 text-base z-[1001] ${
+        className={`fixed bottom-10 left-6 flex justify-center items-center cursor-pointer text-gray-600 mix-blend-difference w-16 h-16 text-base z-1001 ${
           isPlaying ? "animate-spin" : "animate-spin"
         }`}
         style={{

@@ -7,8 +7,7 @@ import ornamentr from "@assets/dekorasi/orn-top-right.webp";
 import ornamenGunungan from "@assets/dekorasi/ornamen-gunungan.webp";
 import { IconMail } from "@components/Icon";
 
-const namaTamu = Astro.url.searchParams.get("nama");
-const gelarTamu = Astro.url.searchParams.get("to");
+const { gelarTamu, namaTamu } = Astro.props;
 ---
 
 <div class="loading-overlay flex" id="loadingOverlay">
@@ -19,7 +18,7 @@ const gelarTamu = Astro.url.searchParams.get("to");
   </div>
 </div>
 
-<section class="fixed h-dvh w-full z-[1000]" id="modalInvitation">
+<section class="fixed h-dvh w-full z-1000" id="modalInvitation">
   <div
     class="carousel-container absolute inset-0 w-full h-screen overflow-hidden"
   >
@@ -73,7 +72,7 @@ const gelarTamu = Astro.url.searchParams.get("to");
         <p class="font-medium text-lg">
           {gelarTamu || "Bapak/Ibu/Saudara/i"}
         </p>
-        <p class="font-semibold text-xl">{namaTamu || "---"}</p>
+        <p class="font-semibold text-xl">{namaTamu || ""}</p>
       </div>
       <!-- <div class="mt-4">
         <p>You are invited to</p>
